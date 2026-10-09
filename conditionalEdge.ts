@@ -1,7 +1,6 @@
 import { Command, StateGraph } from '@langchain/langgraph';
 import { registry } from '@langchain/langgraph/zod';
 import z, { type infer as zInfer } from 'zod';
-import { ne } from 'zod/locales';
 
 const stateDEfinition = z.object({
   nlist: z.array(z.string()).register(registry, {
