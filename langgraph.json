@@ -1,0 +1,7 @@
+{
+  "node_version": "20",
+  "graphs": {
+    "email_agent": "./app.ts:graph"
+  },
+  "env": ".env"
+}
