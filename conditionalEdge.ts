@@ -14,7 +14,7 @@ const stateDEfinition = z.object({
 
 type State = zInfer<typeof stateDEfinition>;
 
-const nodeA = (state: State) => {
+const nodeA = (state: State): Command => {
   const select = state.nlist.at(-1);
   let nexNode;
   console.log(state.nlist);
