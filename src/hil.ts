@@ -59,8 +59,10 @@ let result = await agent.invoke(
 const rl = createInterface({ input: process.stdin, output: process.stdout });
 
 while (isInterrupted<ApprovalRequest>(result) && result[INTERRUPT].length) {
-  const pending = result[INTERRUPT][0]!.value!;
-  const decisions = [];
+  console.log(result[INTERRUPT].at(0)?.value);
+
+  const pending = result[INTERRUPT][0]!.value!; // this has actions requested which are the tool name and its args this is the main data we gonna use. also has review configs whcih are also tool name and its allowed actions (approce,edit.....)
+  const decisions = []; // this array maps to the requested actions array each entry is an answer for an entry in requested actions
 
   for (const req of pending.actionRequests) {
     console.log(`\nApproval required for ${req.name}:`);
