@@ -1,5 +1,5 @@
 import { ChatOpenAI } from '@langchain/openai';
 
-export const llm = new ChatOpenAI({
+export const model = new ChatOpenAI({
   model: 'gpt-4.1-mini',
 });

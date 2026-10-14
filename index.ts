@@ -3,7 +3,7 @@ import { StateGraph } from '@langchain/langgraph';
 import { registry } from '@langchain/langgraph/zod';
 import z, { type infer as zInfer } from 'zod';
 
-const llm = new ChatCohere({
+const model = new ChatCohere({
   model: 'command-a-03-2025',
   temperature: 0,
   maxRetries: 2,

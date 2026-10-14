@@ -1,7 +1,7 @@
 import { createDeepAgent } from 'deepagents';
 import { tool, ToolMessage } from 'langchain';
 import z from 'zod';
-import { llm } from './model';
+import { model } from './model';
 import { createInterface } from 'node:readline/promises';
 import { Command, INTERRUPT, isInterrupted, MemorySaver } from '@langchain/langgraph';
 
@@ -38,7 +38,7 @@ const sendEmail = tool(
 
 const agent = createDeepAgent({
   systemPrompt: SYSTEM_PROMPT,
-  model: llm,
+  model: model,
   checkpointer: new MemorySaver(),
   interruptOn: { send_email: true },
   tools: [sendEmail],

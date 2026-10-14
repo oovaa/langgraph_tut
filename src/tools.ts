@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { tool } from 'langchain';
 import { createDeepAgent } from 'deepagents';
 
-import { llm as model } from './model';
+import { model as model } from './model';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DB_PATH = join(__dirname, 'chinook.db');

@@ -30,7 +30,7 @@
 
 import { createDeepAgent } from 'deepagents';
 
-import { llm as model } from './model';
+import { model as model } from './model';
 import { LogStreamCallbackHandler } from '@langchain/core/tracers/log_stream';
 
 // ════════════════════════════════════════════════════════════════════════

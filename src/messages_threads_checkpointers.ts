@@ -1,9 +1,9 @@
 import { createDeepAgent } from 'deepagents';
-import { llm } from './model';
+import { model } from './model';
 import { MemorySaver } from '@langchain/langgraph';
 
 const agent = createDeepAgent({
-  model: llm,
+  model: model,
   checkpointer: new MemorySaver(),
 });
 

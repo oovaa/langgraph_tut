@@ -27,7 +27,7 @@
 import { MemorySaver } from '@langchain/langgraph';
 import { createDeepAgent } from 'deepagents';
 
-import { llm as model } from './model';
+import { model as model } from './model';
 
 const agent2 = createDeepAgent({
   model,

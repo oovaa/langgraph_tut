@@ -1,6 +1,6 @@
 // typescript/m1/m1.6_agent_mcp.ts
 import { MultiServerMCPClient } from '@langchain/mcp-adapters';
-import { llm as model } from './model';
+import { model as model } from './model';
 import { createDeepAgent } from 'deepagents';
 
 const client = new MultiServerMCPClient({

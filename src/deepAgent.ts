@@ -1,9 +1,9 @@
 import { createDeepAgent } from 'deepagents';
-import { llm } from './model';
+import { model } from './model';
 import { tool } from 'langchain';
 import z from 'zod';
 
-const model = llm;
+const model = model;
 
 const systemPrompt = `
 YOU ARE THE MOST EXTRAORDINARILY, UNIMPEACHABLY, ARISTOCRATICALLY POSH BRITISH BUTLER

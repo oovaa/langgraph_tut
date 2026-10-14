@@ -2,7 +2,7 @@ import { Command, interrupt, MemorySaver, StateGraph } from '@langchain/langgrap
 import z, { type infer as zInfer } from 'zod';
 import { ChatGroq } from '@langchain/groq';
 
-const llm = new ChatGroq({
+const model = new ChatGroq({
   model: 'openai/gpt-oss-20b',
 });
 
@@ -36,7 +36,7 @@ export const readEmail = async (state: EmailAgentState) => {
 
 export const calssifyIntent = async (state: EmailAgentState) => {
   console.log(`Calssifying intent of the email...`);
-  const structuredLlm = llm.withStructuredOutput(EmailClassificationSchema);
+  const structuredLlm = model.withStructuredOutput(EmailClassificationSchema);
 
   const classificatioPrompt = `
   Analyse this email and classify it:
@@ -131,7 +131,7 @@ export const writeResponse = async (state: EmailAgentState) => {
     - use the provided context
   `;
   try {
-    const response = await llm.invoke(draftPrompt);
+    const response = await model.invoke(draftPrompt);
 
     const reviewedUrgencies = ['high', 'complex', 'critical'];
 
