@@ -22,6 +22,7 @@
     "@langchain/langgraph": "^1.5.0",
     "@langchain/mcp-adapters": "^2.0.1",
     "@langchain/openai": "^1.6.2",
+    "@langchain/quickjs": "^0.6.5",
     "@langchain/together-ai": "^0.2.17",
     "deepagents": "^1.14.2",
     "langchain": "^1.5.16",
