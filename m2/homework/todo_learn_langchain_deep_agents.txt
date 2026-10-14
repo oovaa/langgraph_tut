@@ -1,0 +1,42 @@
+TODO List to Learn Langchain Deep Agents:
+
+1. Understand the basics of Langchain framework
+  - Read Langchain documentation
+  - Explore basic tutorials and examples
+
+2. Learn about agents in Langchain
+  - What are agents?
+  - Use cases of agents
+  - Types of agents available
+
+3. Study deep agents concepts
+  - Definition and features of deep agents
+  - Differences between shallow and deep agents
+
+4. Setup development environment
+  - Install Langchain library
+  - Set up necessary dependencies and tools
+
+5. Explore agent creation and management
+  - How to create deep agents
+  - Managing agent lifecycle and states
+
+6. Experiment with agent integrations
+  - Using agents with external APIs and tools
+  - Combine multiple agents for complex tasks
+
+7. Build sample projects
+  - Create simple use cases
+  - Develop advanced scenarios using deep agents
+
+8. Debug and optimize agents
+  - Identify common issues
+  - Performance tuning and best practices
+
+9. Stay updated
+  - Follow Langchain updates
+  - Join community discussions and forums
+
+10. Document and share learnings
+  - Maintain notes
+  - Share knowledge through blogs or talks
