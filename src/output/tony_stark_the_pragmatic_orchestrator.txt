@@ -1,0 +1,31 @@
+
+            =====:=====
+         ==== ...|... ====
+        == ....  |  .... ==
+       == ..  #######  .. ==
+       =  .    #####    .  =
+       == ..    ###    .. ==
+        == ....  #  .... ==
+         ==== ...|... ====
+            =====:=====
+
+  ┌──────────────────────────────┐
+  │  THE PRAGMATIC ORCHESTRATOR  │
+  └──────────────────────────────┘
+
+  Chaotic  [██████░░░░░░░░] Organized
+  ───────────────────────────────────────
+  Cautious [████████░░░░░░] Bold
+  ───────────────────────────────────────
+  Solo     [███████░░░░░░░] Collaborative
+
+  "Fleet is your match, kid: your balanced
+  chaos and collaboration scores suggest you
+  can orchestrate complex flows without
+  crashing the system, though you might want
+  to crank up the boldness a notch to really
+  light up the scoreboard."
+
+  judged by Tony Stark
+
+  matched product: Fleet

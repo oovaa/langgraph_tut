@@ -369,6 +369,21 @@ const PERSONA_STYLES: Record<string, PersonaStyle> = {
     ].join('\n'),
     color: '[91m', // bright red
   },
+
+  'Tony Stark': {
+    mascot: [
+      '     =====:=====',
+      '  ==== ...|... ====',
+      ' == ....  |  .... ==',
+      '== ..  #######  .. ==',
+      '=  .    #####    .  =',
+      '== ..    ###    .. ==',
+      ' == ....  #  .... ==',
+      '  ==== ...|... ====',
+      '     =====:=====',
+    ].join('\n'),
+    color: '[96m', // arc-reactor cyan
+  },
 };
 
 const PLATFORM = 'X';
