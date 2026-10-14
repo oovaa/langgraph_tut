@@ -29,13 +29,14 @@
  */
 
 import { createInterface } from 'node:readline/promises';
-import { z } from 'zod';
+import { string, z } from 'zod';
 
 import { tool, ToolMessage } from 'langchain';
 import { Command, INTERRUPT, isInterrupted, MemorySaver } from '@langchain/langgraph';
 import { createDeepAgent } from 'deepagents';
 
 import { model } from './model.ts';
+import { log } from 'node:console';
 
 interface ActionRequest {
   name: string;
@@ -67,14 +68,22 @@ interface ApprovalRequest {
 //   );
 // ════════════════════════════════════════════════════════════════════════
 
-const yourActionTool = tool(
-  (_input: { argument: string }): string => {
-    throw new Error('TODO 1: see the comment block above');
+const searchVectorDatabase = tool(
+  (input: { name: string; role: string }): string => {
+    const re = `documents for the user ${input.name} with the role ${input.role} are
+- he is a very good guy
+  `;
+    console.log(re);
+    return re;
   },
   {
-    name: 'your_action_tool',
-    description: 'TODO 1: replace this description and body with your own action tool.',
-    schema: z.object({ argument: z.string() }),
+    name: 'search_vector_database',
+    description:
+      'searches the vector database for information about the user based on thier name and role',
+    schema: z.object({
+      name: z.string().describe('the name of the user to search for'),
+      role: z.string().describe('the role of the user'),
+    }),
   },
 );
 
@@ -92,13 +101,14 @@ const yourActionTool = tool(
 //     want to call it.
 // ════════════════════════════════════════════════════════════════════════
 
-const SYSTEM_PROMPT = 'TODO 2: replace this with your own system prompt.';
-const INITIAL_REQUEST = 'TODO 2: replace this with a request that would trigger your tool.';
-const INTERRUPT_ON = { your_action_tool: true }; // TODO 2: replace with your own allowedDecisions config
+const SYSTEM_PROMPT =
+  'you are an assistant with access to a search vector database tool witch gets you data about a user based on name and role answer queries professionally and be breif';
+const INITIAL_REQUEST = 'what information do we have about the admin omar';
+const INTERRUPT_ON = { search_vector_database: true }; // TODO 2: replace with your own allowedDecisions config
 
 // Guards against running with an unfilled placeholder; the filled
 // reference doesn't need this since there's no placeholder text left.
-if (yourActionTool.description.includes('TODO 1')) {
+if (searchVectorDatabase.description.includes('TODO 1')) {
   throw new Error('TODO 1: see the comment block above');
 }
 if (SYSTEM_PROMPT.includes('TODO 2') || INITIAL_REQUEST.includes('TODO 2')) {
@@ -107,7 +117,7 @@ if (SYSTEM_PROMPT.includes('TODO 2') || INITIAL_REQUEST.includes('TODO 2')) {
 
 const agent = createDeepAgent({
   model,
-  tools: [yourActionTool],
+  tools: [searchVectorDatabase],
   systemPrompt: SYSTEM_PROMPT,
   interruptOn: INTERRUPT_ON,
   checkpointer: new MemorySaver(),
@@ -120,7 +130,7 @@ let result = await agent.invoke({ messages: [{ role: 'user', content: INITIAL_RE
 const rl = createInterface({ input: process.stdin, output: process.stdout });
 
 while (isInterrupted<ApprovalRequest>(result) && result[INTERRUPT].length) {
-  const pending = result[INTERRUPT][0].value!;
+  const pending = result[INTERRUPT][0]!.value!;
   const decisions = [];
 
   for (const req of pending.actionRequests) {
@@ -135,7 +145,11 @@ while (isInterrupted<ApprovalRequest>(result) && result[INTERRUPT].length) {
       decisions.push({ type: 'approve' });
     } else if (['edit', 'e'].includes(choice)) {
       const editedArgs = { ...req.args };
+      console.log('edit args', editedArgs);
+
       const key = Object.keys(editedArgs)[0];
+      console.log('key', key);
+
       editedArgs[key] = await rl.question(`New value for '${key}': `);
       decisions.push({
         type: 'edit',
