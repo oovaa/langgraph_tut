@@ -62,4 +62,7 @@ const graph = new StateGraph(stateDEfinition)
   // here we go one super step on time which is a lyer a time not going to the next unless the siblings nodes are done
   .compile();
 
+  
+
+
 console.log((await graph.invoke({})).nlist);

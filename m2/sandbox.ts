@@ -1,7 +1,6 @@
 import { randomUUID } from 'node:crypto';
-
+import { createDeepAgent, LangSmithSandbox, LocalShellBackend } from 'deepagents';
 import { context } from 'langchain';
-import { LangSmithSandbox, LocalShellBackend, createDeepAgent } from 'deepagents';
 import { SandboxClient } from 'langsmith/sandbox';
 
 import { model } from '../src/model.ts';

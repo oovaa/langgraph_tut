@@ -1,8 +1,8 @@
 import { Command, interrupt, MemorySaver, StateGraph } from '@langchain/langgraph';
 import { registry } from '@langchain/langgraph/zod';
-import z, { type infer as zInfer } from 'zod';
-import * as readline from 'readline/promises';
 import { stdin as input, stdout as output } from 'process';
+import * as readline from 'readline/promises';
+import z, { type infer as zInfer } from 'zod';
 
 const StateDefinition = z.object({
   userInput: z.string().optional(),
